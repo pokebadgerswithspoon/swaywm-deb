@@ -1,5 +1,9 @@
-. $BASEDIR/wlroots
-. $BASEDIR/json-c
-. $BASEDIR/scdoc
-. $BASEDIR/sway
-. $BASEDIR/swaybg
+run () {
+    cd /opt/scripts
+    . ./$1    
+}
+run json-c
+run wlroots
+run scdoc
+run sway
+run swaybg

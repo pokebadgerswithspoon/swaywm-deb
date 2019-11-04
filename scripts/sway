@@ -5,3 +5,7 @@ git checkout 1.2
 reconfig_meson
 ninja -C build
 ninja -C build install
+
+DESTDIR=~/sway-debs/sway
+mkdir -p $DESTDIR
+DESTDIR=$DESTDIR ninja -C build install

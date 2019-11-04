@@ -1,6 +1,12 @@
 #!/bin/sh
 ACTION=${1:-usage}
 
+if [ $ACTION = "bash" ]; then
+	cd /opt/scripts/
+    /bin/bash
+	exit
+fi
+
 reconfig_meson() {
 	if [ -d build ]; then
 		rm -r build/meson-logs
