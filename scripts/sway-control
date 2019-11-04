@@ -1,9 +1,0 @@
-Package: sway
-Version: $VERSION
-Section: base
-Priority: optional
-Architecture: i686
-Depends: wlroots (>= 0.0.0)
-Maintainer: Lauri <pokebadgerswithspoon@github.com>
-Description: Sway
- i3-compatible Wayland compositor

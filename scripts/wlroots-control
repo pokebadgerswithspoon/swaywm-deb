@@ -1,7 +1,0 @@
-Package: wlroots
-Version: $VERSION
-Section: base
-Priority: optional
-Architecture: i686
-Maintainer: Lauri <pokebadgerswithspoon@github.com>
-Description: A modular Wayland compositor library

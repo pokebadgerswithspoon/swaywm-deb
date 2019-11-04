@@ -11,11 +11,25 @@ ninja -C build
 ninja -C build install
 ldconfig
 
-DEBVER=1
-DEB=wlroots-$VERSION-$DEBVER
+PACKAGE=wlroots
+VARIANT=1
+DEBVERSION=$VERSION-$VARIANT
+DEB=$PACKAGE-$DEBVERSION
 DESTDIR=~/sway-debs/$DEB
 mkdir -p $DESTDIR
 DESTDIR=$DESTDIR ninja -C build install
 
 mkdir -p $DESTDIR/DEBIAN
 
+cat <<EOF > $DESTDIR/DEBIAN/control
+Package: $PACKAGE
+Version: $DEBVERSION
+Section: base
+Priority: optional
+Architecture: i686
+Maintainer: Lauri <pokebadgerswithspoon@github.com>
+Description: A modular Wayland compositor library
+EOF
+
+cd ~/sway-debs
+dpkg-deb --build $DEB

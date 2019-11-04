@@ -6,6 +6,27 @@ reconfig_meson
 ninja -C build
 ninja -C build install
 
-DESTDIR=~/sway-debs/sway
+PACKAGE=sway
+VARIANT=1
+DEBVERSION=$VERSION-$VARIANT
+DEB=$PACKAGE-$DEBVERSION
+DESTDIR=~/sway-debs/$DEB
 mkdir -p $DESTDIR
 DESTDIR=$DESTDIR ninja -C build install
+
+mkdir -p $DESTDIR/DEBIAN
+
+cat <<EOF > $DESTDIR/DEBIAN/control
+Package: $PACKAGE
+Version: $DEBVERSION
+Section: base
+Priority: optional
+Architecture: i686
+Depends: wlroots (>= 0.0.0)
+Maintainer: Lauri <pokebadgerswithspoon@github.com>
+Description: Sway
+ i3-compatible Wayland compositor
+EOF
+
+cd ~/sway-debs
+dpkg-deb --build $DEB

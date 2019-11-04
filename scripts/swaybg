@@ -1,9 +1,10 @@
 #!/bin/sh
 source reconfig_meson
 
+VERSION=1.0
 cd ~/sway-src/swaybg
 git fetch
-git checkout 1.0 
+git checkout $VERSION 
 reconfig_meson
 ninja -C build
 ninja -C build install
@@ -11,3 +12,29 @@ ninja -C build install
 DESTDIR=~/sway-debs/swaybg
 mkdir -p $DESTDIR
 DESTDIR=$DESTDIR ninja -C build install
+
+
+PACKAGE=swaybg
+VARIANT=1
+DEBVERSION=$VERSION-$VARIANT
+DEB=$PACKAGE-$DEBVERSION
+DESTDIR=~/sway-debs/$DEB
+mkdir -p $DESTDIR
+DESTDIR=$DESTDIR ninja -C build install
+
+mkdir -p $DESTDIR/DEBIAN
+
+cat <<EOF > $DESTDIR/DEBIAN/control
+Package: $PACKAGE
+Version: $DEBVERSION
+Section: base
+Priority: optional
+Architecture: i686
+Depends: sway (>= 0.0.0)
+Maintainer: Lauri <pokebadgerswithspoon@github.com>
+Description: Sway
+ i3-compatible Wayland compositor
+EOF
+
+cd ~/sway-debs
+dpkg-deb --build $DEB
