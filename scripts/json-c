@@ -1,0 +1,11 @@
+#!/bin/sh
+cd ~/sway-src
+cd json-c
+git fetch
+git checkout json-c-0.13.1-20180305
+sh autogen.sh
+./configure --enable-threading --prefix=/usr/local
+CPUCOUNT=$(grep processor /proc/cpuinfo | wc -l)
+make -j$CPUCOUNT
+make install
+ldconfig

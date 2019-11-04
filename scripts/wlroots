@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd ~/sway-src/wlroots
+git fetch
+git checkout 0.8.1
+
+reconfig_meson
+ninja -C build
+ninja -C build install
+ldconfig

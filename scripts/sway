@@ -1,0 +1,7 @@
+#!/bin/sh
+cd ~/sway-src/sway
+git fetch
+git checkout 1.2
+reconfig_meson
+ninja -C build
+ninja -C build install

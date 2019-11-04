@@ -1,0 +1,9 @@
+#!/bin/sh
+source reconfig_meson
+
+cd ~/sway-src/swaybg
+git fetch
+git checkout 1.0 
+reconfig_meson
+ninja -C build
+ninja -C build install

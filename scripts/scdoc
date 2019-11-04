@@ -1,0 +1,6 @@
+#!/bin/sh
+cd ~/sway-src/scdoc
+git fetch
+git checkout 1.9.7
+make PREFIX=/usr/local -j$CPUCOUNT
+make PREFIX=/usr/local install

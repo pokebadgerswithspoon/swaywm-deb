@@ -1,0 +1,3 @@
+  echo "Usage:"
+  echo "  runme.sh list|all"
+  exit

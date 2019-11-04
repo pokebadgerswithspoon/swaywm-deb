@@ -1,0 +1,5 @@
+. $BASEDIR/wlroots
+. $BASEDIR/json-c
+. $BASEDIR/scdoc
+. $BASEDIR/sway
+. $BASEDIR/swaybg
